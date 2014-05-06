@@ -6,6 +6,8 @@ angularMoonApp.controller('HeaderController', ['$scope', '$location', function (
     case '/':
       $scope.currentItem = 'home'
       break;
-    case '/'
+    case '/source':
+      $scope.currentItem = 'source'
+      break;
   }
 }]);

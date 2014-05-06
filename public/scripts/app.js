@@ -6,10 +6,9 @@ var angularMoonApp = angular.module('angularMoon', [
 	$routeProvider
     .when('/', {
       templateUrl: 'templates/home.html',
-      controller: 'HomeController'
     })
-    .when('/search', {
-      templateUrl: 'templates/search.html'
+    .when('/source', {
+      templateUrl: 'templates/source.html'
     })
     .otherwise({
       redirectTo: '/'
