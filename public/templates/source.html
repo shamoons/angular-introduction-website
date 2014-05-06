@@ -8,12 +8,12 @@
     </small>
   </h1>
 
-  <ol class="breadcrumb" ng-hide="breadcrumbPath.length === 0">
+  <ol class="breadcrumb" ng-hide="breadcrumbPath.length === 1">
     <li>
       <a href="/source">home</a>
     </li>
     <li ng-repeat="path in breadcrumbPath" ng-hide="$last">
-      <a href="/source/{{ path}}">{{ path }}</a>
+      <a href="/source/{{ path }}">{{ path }}</a>
     </li>
   </ol>
 
