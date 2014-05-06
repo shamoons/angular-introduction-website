@@ -1,9 +1,25 @@
 <div class="row" ng-controller="SourceController">
-  <h1>Source Code Listing</h1>
+  <h1>
+    Source Code Listing
+    <small>
+      <span ng-repeat="path in breadcrumbPath" ng-hide="$last">
+        {{ path }}
+      </span>
+    </small>
+  </h1>
+
+  <ol class="breadcrumb" ng-hide="breadcrumbPath.length === 0">
+    <li>
+      <a href="/source">home</a>
+    </li>
+    <li ng-repeat="path in breadcrumbPath" ng-hide="$last">
+      <a href="/source/{{ path}}">{{ path }}</a>
+    </li>
+  </ol>
 
   <div ng-repeat="content in contents">
     <i class="fa" ng-class="{'fa-folder-o': content.type === 'dir', 'fa-file-o': content.type === 'file'}"></i>
-  	{{ content.name }}
+  	<a href="/source/{{ content.path}}">{{ content.name }}</a>
   </div>
 
 </div>
