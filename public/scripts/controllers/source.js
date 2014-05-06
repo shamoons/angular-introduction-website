@@ -13,7 +13,6 @@ angularMoonApp.controller('SourceController', ['$scope', '$routeParams', 'fileSe
 			$scope.breadcrumbPath.push('');
 
 			$scope.fileContents = atob(response.data.content);
-			hljs.initHighlightingOnLoad();
 		}
 	});
 }]);
