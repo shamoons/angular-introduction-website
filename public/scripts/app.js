@@ -13,6 +13,9 @@ var angularMoonApp = angular.module('angularMoon', [
     .when('/source/:path*', {
       templateUrl: 'templates/source.html'
     })
+    .when('/tests', {
+      templateUrl: 'templates/tests.html'
+    })
     .otherwise({
       redirectTo: '/'
     });

@@ -1,6 +1,8 @@
 'use strict';
 
-angularMoonApp.controller('SourceController', ['$scope', '$routeParams', 'fileService', function ($scope, $routeParams, fileService) {
+angularMoonApp.controller('SourceController', ['$scope', '$rootScope', '$routeParams', 'fileService', function ($scope, $rootScope, $routeParams, fileService) {
+	$rootScope.currentItem = 'source';
+
 	fileService.getContents($routeParams.path).then(function(response) {
 		$scope.contents = response.data;
 		$scope.fileContents = null;
