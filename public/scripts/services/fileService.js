@@ -11,8 +11,6 @@ angularMoonApp.service('fileService', ['$http', function($http) {
     return $http({
       url: 'https://api.github.com/repos/shamoons/angular-introduction-website/contents/' + path,
       method: 'GET',
-    }).success(function(response) {
-      console.log(response);
     });
   }
 }]);
