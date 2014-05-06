@@ -2,7 +2,8 @@
   <h1>Source Code Listing</h1>
 
   <div ng-repeat="content in contents">
-  	{{ content }}
+    <i class="fa" ng-class="{'fa-folder-o': content.type === 'dir', 'fa-file-o': content.type === 'file'}"></i>
+  	{{ content.name }}
   </div>
 
 </div>
