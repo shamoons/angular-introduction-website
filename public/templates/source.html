@@ -21,12 +21,12 @@
       </div>
     </div>
   </div>
-  <div class="row" ng-if="fileContents !== null">
+  <div class="row" ng-if="fileContents !== null" ng-cloak>
     <div class="col-md-8"><pre><code>{{ fileContents }}</code></pre></div>
     <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Commits</h3>
+          <h3 class="panel-title">{{ commits.length }} Commits</h3>
         </div>
         <div class="panel-body">
           <div class="media" ng-repeat="commit in commits">

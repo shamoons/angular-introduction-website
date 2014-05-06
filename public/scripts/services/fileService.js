@@ -18,7 +18,7 @@ angularMoonApp.service('fileService', ['$http', function($http) {
     }
 
     return $http({
-      url: 'https://api.github.com/repos/shamoons/angular-introduction-website/commits',
+      url: 'https://api.github.com/repos/shamoons/angular-introduction-website/commits?path=' + path,
       data: {
       	path: path
       },
