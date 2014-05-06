@@ -2,7 +2,7 @@
 
 var angularMoonApp = angular.module('angularMoon', [
 	'ngRoute'
-]).config(['$routeProvider, $locationProvider', function($routeProvider, $locationProvider) {
+]).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider
     .when('/', {
       templateUrl: 'templates/home.html',
