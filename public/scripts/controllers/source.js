@@ -11,10 +11,9 @@ angularMoonApp.controller('SourceController', ['$scope', '$routeParams', 'fileSe
 			// We have one file
 			$scope.breadcrumbPath = response.data.path.split('/');
 			$scope.breadcrumbPath.push('');
+
+			$scope.fileContents = atob(response.data.content);
+			hljs.initHighlightingOnLoad();
 		}
 	});
-
-	$scope.showFileContents = function(contents) {
-		console.log(contents);
-	}
 }]);

@@ -1,9 +1,7 @@
 'use strict';
 
 angularMoonApp.service('fileService', ['$http', function($http) {
-  var company = this;
-
-  company.getContents = function (path) {
+  this.getContents = function (path) {
     if(path === undefined) {
       path = '';
     }

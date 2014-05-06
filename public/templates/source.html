@@ -12,11 +12,11 @@
     </li>
   </ol>
 
-  <div ng-repeat="content in contents">
+  <div ng-repeat="content in contents" ng-hide="fileContents !== null">
     <i class="fa" ng-class="{'fa-folder-o': content.type === 'dir', 'fa-file-o': content.type === 'file'}"></i>
   	<a href="/source/{{ content.path}}">{{ content.name }}</a>
   </div>
 
-  <ng-include="showFileContents(fileContents)"></ng-include>
+  <div ng-if="fileContents !== null"><pre><code>{{ fileContents }}</code></pre></div>
 
 </div>
