@@ -11,4 +11,18 @@ angularMoonApp.service('fileService', ['$http', function($http) {
       method: 'GET',
     });
   }
+
+  this.getCommits = function(path) {
+    if(path === undefined) {
+      path = '';
+    }
+
+    return $http({
+      url: 'https://api.github.com/repos/shamoons/angular-introduction-website/commits',
+      data: {
+      	path: path
+      },
+      method: 'GET',
+    });
+  }
 }]);

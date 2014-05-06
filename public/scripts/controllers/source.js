@@ -13,6 +13,10 @@ angularMoonApp.controller('SourceController', ['$scope', '$routeParams', 'fileSe
 			$scope.breadcrumbPath.push('');
 
 			$scope.fileContents = atob(response.data.content);
+
+			fileService.getCommits(response.data.path).then(function(response) {
+				$scope.commits = response.data;
+			});
 		}
 	});
 }]);

@@ -1,22 +1,50 @@
-<div class="row" ng-controller="SourceController">
-  <h1>
-    Source Code Listing
-  </h1>
+<div class="container" ng-controller="SourceController">
+  <div class="row">
+    <div class="col-md-12">
+    
+      <h1>
+        Source Code Listing
+      </h1>
 
-  <ol class="breadcrumb" ng-hide="breadcrumbPath.length === 1">
-    <li>
-      <a href="/source">home</a>
-    </li>
-    <li ng-repeat="path in breadcrumbPath" ng-hide="$last">
-      <a href="/source/{{ path }}">{{ path }}</a>
-    </li>
-  </ol>
+      <ol class="breadcrumb" ng-hide="breadcrumbPath.length === 1">
+        <li>
+          <a href="/source">home</a>
+        </li>
+        <li ng-repeat="path in breadcrumbPath" ng-hide="$last">
+          <a href="/source/{{ path }}">{{ path }}</a>
+        </li>
+      </ol>
 
-  <div ng-repeat="content in contents" ng-hide="fileContents !== null">
-    <i class="fa" ng-class="{'fa-folder-o': content.type === 'dir', 'fa-file-o': content.type === 'file'}"></i>
-  	<a href="/source/{{ content.path}}">{{ content.name }}</a>
+      <div ng-repeat="content in contents" ng-hide="fileContents !== null">
+        <i class="fa" ng-class="{'fa-folder-o': content.type === 'dir', 'fa-file-o': content.type === 'file'}"></i>
+        <a href="/source/{{ content.path}}">{{ content.name }}</a>
+      </div>
+    </div>
   </div>
-
-  <div ng-if="fileContents !== null"><pre><code>{{ fileContents }}</code></pre></div>
+  <div class="row" ng-if="fileContents !== null">
+    <div class="col-md-8"><pre><code>{{ fileContents }}</code></pre></div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Commits</h3>
+        </div>
+        <div class="panel-body">
+          <div class="media" ng-repeat="commit in commits">
+            <div class="media-body">
+              <h4 class="media-heading">
+                {{commit.commit.author.date}}
+                <small>
+                  {{commit.sha}}
+                </small>
+              </h4>
+              <p>
+                {{ commit.commit.message }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>

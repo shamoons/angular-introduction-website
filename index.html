@@ -21,11 +21,8 @@
   </head>
   <body ng-app="angularMoon">
     <ng-include src="'/templates/header.html'"></ng-include>
+    <div ng-view></div>
     
-    <div class="container">
-      <div ng-view></div>
-    </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular-route.js"></script>
