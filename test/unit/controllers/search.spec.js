@@ -40,7 +40,7 @@
 
       $location.path('/');
 
-      $scope.$apply()
+      $scope.$apply();
 
       expect($scope.searchTerm).toBe('');
     });

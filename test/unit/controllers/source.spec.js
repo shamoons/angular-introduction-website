@@ -41,15 +41,17 @@
     });
 
     it("should return an object with multiple files", function() {
-      var multipleFiles = [{path: '.DS_Store'}, {path: '.bowerrc'}];
+      var multipleFiles = {data: [{path: '.DS_Store'}, {path: '.bowerrc'}]};
       deferred.resolve(multipleFiles);
       spyOn(fileService, 'getContents').andReturn(deferred.promise);
 
       createController();
       $scope.init();
 
-      expect($scope.contents).toBe(multipleFiles);
-      expect($scope.breadcrumbPath).toBe('');
+      $scope.$apply();
+
+      expect($scope.contents).toBe(multipleFiles.data);
+      expect($scope.breadcrumbPath.length).toBe(1);
     });
   });
 })();
