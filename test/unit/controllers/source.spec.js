@@ -2,13 +2,14 @@
 
 (function() {
   describe('SourceController', function() {
-    var $scope, $rootScope, $httpBackend, createController, fileService;
+    var $scope, $rootScope, $httpBackend, $routeParams, createController, fileService;
 
     beforeEach(module('angularMoon'));
 
     beforeEach(inject(function($injector) {
       $httpBackend = $injector.get('$httpBackend');
       $rootScope = $injector.get('$rootScope');
+      $routeParams = $injector.get('$routeParams');
       $scope = $rootScope.$new();
 
       fileService = $injector.get('fileService');
@@ -20,6 +21,7 @@
       createController = function() {
         return $controller('SourceController', {
           '$scope': $scope,
+          '$routeParams': $routeParams,
           'fileService': fileService
         });
       };
