@@ -2,7 +2,7 @@
 
 (function() {
   describe('SourceController', function() {
-    var $scope, $rootScope, $httpBackend, $routeParams, createController, fileService;
+    var $scope, $rootScope, $httpBackend, $routeParams, $q, createController, fileService, deferred;
 
     beforeEach(module('angularMoon'));
 
@@ -11,11 +11,10 @@
       $rootScope = $injector.get('$rootScope');
       $routeParams = $injector.get('$routeParams');
       $scope = $rootScope.$new();
+      $q = $injector.get('$q');
+      deferred = $q.defer();
 
       fileService = $injector.get('fileService');
-      spyOn(fileService, 'getContents').andCallThrough();
-
-
       var $controller = $injector.get('$controller');
 
       createController = function() {
@@ -33,12 +32,24 @@
       expect($rootScope.currentItem).toBe('source');
     });
 
-    it("should get the contents of the root folder", function() {
+    it("should get test the getContents call of the fileService", function() {
+      spyOn(fileService, 'getContents').andCallThrough();
       createController();
       $scope.init();
 
       expect(fileService.getContents).toHaveBeenCalled();
     });
 
+    it("should return an object with multiple files", function() {
+      var multipleFiles = [{path: '.DS_Store'}, {path: '.bowerrc'}];
+      deferred.resolve(multipleFiles);
+      spyOn(fileService, 'getContents').andReturn(deferred.promise);
+
+      createController();
+      $scope.init();
+
+      expect($scope.contents).toBe(multipleFiles);
+      expect($scope.breadcrumbPath).toBe('');
+    });
   });
 })();
