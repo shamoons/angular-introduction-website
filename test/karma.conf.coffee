@@ -22,6 +22,9 @@ module.exports = (config) ->
       'karma-junit-reporter'
       'karma-jasmine'
       'karma-phantomjs-launcher'
+      'karma-story-reporter'
     ]
+
+    reporters: ['story']
 
     logLevel: config.LOG_INFO
