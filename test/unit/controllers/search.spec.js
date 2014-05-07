@@ -2,18 +2,22 @@
 
 (function() {
   describe('SearchController', function() {
-    var $scope, createController;
+    var $scope, $rootScope, $location, createController;
 
     beforeEach(module('angularMoon'));
 
     beforeEach(inject(function($injector) {
+      $rootScope = $injector.get('$rootScope');
       $scope = $rootScope.$new();
+      $location = $injector.get('$location');
 
       var $controller = $injector.get('$controller');
 
       createController = function() {
         return $controller('SearchController', {
-          '$scope': $scope
+          '$scope': $scope,
+          '$rootScope': $rootScope,
+          '$location': $location
         });
       };
     }));
@@ -28,6 +32,17 @@
 
     it("should not execute a search if there are non-alphanumeric characters", function() {
 
+    });
+
+    it("should clear the search field when the URL changes", function() {
+      createController();
+      $scope.init();
+
+      $location.path('/');
+
+      $scope.$apply()
+
+      expect($scope.searchTerm).toBe('');
     });
   });
 })();
