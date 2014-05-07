@@ -13,16 +13,16 @@
       var $controller = $injector.get('$controller');
 
       createController = function() {
-        return $controller('HeaderController');
+        return $controller('HeaderController', {
+          '$scope': $scope
+        });
       };
     }));
 
     it("should set the current menu item to 'home'", function() {
       createController();
       $scope.init();
-
       expect($rootScope.currentItem).toBe('home');
-
     });
 
   });
