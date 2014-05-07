@@ -11,7 +11,7 @@
       </ul>
       <form class="navbar-form navbar-right" role="search" ng-controller="SearchController">
         <div class="form-group">
-          Searching for <strong>{{ searchTerm }}</strong>
+          <span ng-show="searchTerm.length > 0">Searching for <strong>{{ searchTerm }}</strong></span>
           <input type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
         </div>
         <button type="submit" class="btn btn-default">Go</button>
