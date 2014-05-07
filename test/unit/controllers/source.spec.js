@@ -2,19 +2,25 @@
 
 (function() {
   describe('SourceController', function() {
-    var $scope, $rootScope, createController;
+    var $scope, $rootScope, $httpBackend, createController, fileService;
 
     beforeEach(module('angularMoon'));
 
     beforeEach(inject(function($injector) {
+      $httpBackend = $injector.get('$httpBackend');
       $rootScope = $injector.get('$rootScope');
       $scope = $rootScope.$new();
+
+      fileService = $injector.get('fileService');
+      spyOn(fileService, 'getContents').andCallThrough();
+
 
       var $controller = $injector.get('$controller');
 
       createController = function() {
         return $controller('SourceController', {
-          '$scope': $scope
+          '$scope': $scope,
+          'fileService': fileService
         });
       };
     }));
@@ -28,6 +34,8 @@
     it("should get the contents of the root folder", function() {
       createController();
       $scope.init();
+
+      expect(fileService.getContents).toHaveBeenCalled();
     });
 
   });
