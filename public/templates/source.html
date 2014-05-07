@@ -15,10 +15,21 @@
         </li>
       </ol>
 
-      <div ng-repeat="content in contents" ng-hide="fileContents !== null">
-        <i class="fa" ng-class="{'fa-folder-o': content.type === 'dir', 'fa-file-o': content.type === 'file'}"></i>
-        <a href="/source/{{ content.path}}">{{ content.name }}</a>
-      </div>
+      <table class="table table-condensed table-hover table-striped">
+        <tr ng-repeat="content in contents" ng-hide="fileContents !== null">
+          <td>
+            <i class="fa" ng-class="{'fa-folder-o': content.type === 'dir', 'fa-file-o': content.type === 'file'}"></i>
+            <a href="/source/{{ content.path}}">{{ content.name }}</a>
+          </td>
+          <td ng-if="content.type === 'file'">
+            {{ content.size }} bytes
+          </td>
+          <td ng-if="content.type !== 'file'">
+            -
+          </td>
+        </tr>
+      </table>
+
     </div>
   </div>
 
