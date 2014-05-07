@@ -6,5 +6,4 @@ angularMoonApp.controller('HeaderController', ['$scope', '$rootScope', function 
   }
 
   $scope.init();
-  
 }]);

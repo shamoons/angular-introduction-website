@@ -19,7 +19,6 @@ module.exports = (config) ->
     browsers: ['PhantomJS']
 
     plugins: [
-      'karma-junit-reporter'
       'karma-jasmine'
       'karma-phantomjs-launcher'
       'karma-story-reporter'
