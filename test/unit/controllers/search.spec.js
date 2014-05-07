@@ -35,14 +35,7 @@
     });
 
     it("should clear the search field when the URL changes", function() {
-      createController();
-      $scope.init();
 
-      $location.path('/');
-
-      $scope.$apply();
-
-      expect($scope.searchTerm).toBe('');
     });
   });
 })();
