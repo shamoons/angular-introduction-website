@@ -35,7 +35,7 @@
               <h4 class="media-heading">
                 {{commit.commit.author.date}}
                 <small>
-                  {{commit.sha}}
+                  <a href="{{ commit.html_url }}" target="_blank">{{commit.sha}}</a>
                 </small>
               </h4>
               <p>
