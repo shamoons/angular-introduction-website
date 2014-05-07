@@ -3,18 +3,16 @@ module.exports = (config) ->
     basePath: '../'
 
     files: [
+      'public/bower_components/lodash/dist/lodash.min.js'
+      'public/bower_components/angular/angular.min.js'
+      'public/bower_components/angular-mocks/angular-mocks.js'
+      'public/bower_components/angular-route/angular-route.min.js'
+      'public/bower_components/angular-strap/dist/angular-strap.min.js'
       'public/scripts/**/*.js'
-      'test/lib/angular/angular-mocks.js'
       'test/unit/**/*.js'
     ]
 
-    # exclude: [
-    #     'app/lib/angular/angular-loader.js',
-    #     'app/lib/angular/*.min.js',
-    #     'app/lib/angular/angular-scenario.js'
-    # ],
-
-    autoWatch: true
+    singleRun: true
 
     frameworks: ['jasmine']
 
@@ -26,6 +24,4 @@ module.exports = (config) ->
       'karma-phantomjs-launcher'
     ]
 
-    junitReporter:
-      outputFile: 'test_out/unit.xml'
-      suite: 'unit'
+    logLevel: config.LOG_INFO
